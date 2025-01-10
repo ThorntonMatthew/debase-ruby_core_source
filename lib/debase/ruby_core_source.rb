@@ -70,7 +70,7 @@ module Debase
     def self.ruby_source_dir_version(dir)
       match = /ruby-([0-9\.]+)-((p|rc|preview)[0-9]+)\z/.match(dir)
 
-      puts "dir: #{dir} -  match: #{match}"
+      p "dir: #{dir} -  match: #{match}"
 
       Gem::Version.new("#{match[1]}.#{match[2]}")
     end
