@@ -71,7 +71,7 @@ module Debase
     end
 
     def self.ruby_source_dir_version(dir)
-      match = /ruby-([0-9\.]+)-((p|rc|preview)[0-9]+)\z/.match(dir)
+      match = /ruby-([0-9\.]+)-((p|rc|preview)-?[0-9]+)\z/.match(dir)
 
       LOGGER.info("dir: #{dir} -  match: #{match}")
 
