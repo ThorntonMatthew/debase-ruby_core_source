@@ -1,5 +1,6 @@
 require 'debase/ruby_core_source/version'
 require 'rbconfig'
+require 'logger'
 
 module Debase
   module RubyCoreSource
@@ -9,6 +10,8 @@ module Debase
         # Format of this hash:
         # <RUBY_REVISION> => '<sources directory name>', e.g. `61243 => 'ruby-2.5.0-rc1'`
     }
+
+    LOGGER = Logger.new(STDOUT)
 
     def self.create_makefile_with_core(hdrs, name)
       # First, see if the gem already has the needed headers
@@ -70,7 +73,7 @@ module Debase
     def self.ruby_source_dir_version(dir)
       match = /ruby-([0-9\.]+)-((p|rc|preview)[0-9]+)\z/.match(dir)
 
-      p "dir: #{dir} -  match: #{match}"
+      LOGGER.info("dir: #{dir} -  match: #{match}")
 
       Gem::Version.new("#{match[1]}.#{match[2]}")
     end
